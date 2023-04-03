@@ -60,7 +60,7 @@ def rectangle(x, y, width, height, color):
         t.left(90)         # rotera paddan åt vänster 90 grader
     t.end_fill()           # Definierar slutet för själva fyllandet
     
-    
+# Funktionen anropar funktionerna rectangle och pentagram
 def vietnamese_flag(x, y, h):
     w = 3*h/2
     rectangle(x, y, w, h, 'red')
