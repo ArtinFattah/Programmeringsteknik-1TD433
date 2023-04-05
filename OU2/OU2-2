@@ -1,0 +1,27 @@
+#!/usr/bin/python3
+
+# övning 1
+def smooth_a(x, n):
+    numerator = [x[0]]*n + x + [x[-1]]*n
+    denumerator = 2*n+1
+    return [sum(numerator[i-n:i+1+n]) / denumerator for i in range(n, len(x) + n)]
+    
+def round_list(a_list, ndigits):
+        if ndigits < 0:
+            return print('n must be positive')
+        return [round(ele, ndigits) for ele in a_list]
+
+def smooth_b(x, n):
+    numerator = [0]*n + x + [0]*n
+    denumerator = [0]*n + [1]*len(x) + [0]*n
+    return [sum(numerator[i-n:i+1+n]) / sum(denumerator[i-n:i+1+n]) for i in range(n, len(x) + n)]
+
+x = [1, 2, 6, 4, 5, 0, 1, 2]
+print('smooth_a(x, 1): ', smooth_a(x, 1)) 
+print('smooth_a(x, 2): ', smooth_a(x, 2))
+print('smooth_a(x, 1) rounded: ', round_list(smooth_a(x, 1), 2))
+print('smooth_b(x, 1): ', smooth_b(x, 1))
+print('smooth_b(x, 2): ', smooth_b(x, 2)) 
+
+
+    
