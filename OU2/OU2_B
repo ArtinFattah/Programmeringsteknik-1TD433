@@ -1,0 +1,26 @@
+def smooth_a(a, n):
+    if n < 0:
+        return print('n must be positive')
+    numerator = [a[0]*n] + a + [a[-1]*n]
+    denumerator = [1]*n + [1]*len(a) + [1]*n
+    return [sum(numerator[i-n:i+n+1])/sum(denumerator[i-n:i+n+1]) for i in range(n, len(a)-n)]
+
+def round_list(my_list, ndigits):
+    return [round(ele, ndigits) for ele in my_list]
+
+def smooth_b(lst, n):
+    numerator = [0]*n + lst + [0]*n
+    denumerator = [0]*n + [1]*len(lst) + [0]*n
+    return [sum(numerator[i-n:i+n+1])/sum(denumerator[i-n:i+n+1]) for i in range(n, len(lst)-n)]
+
+x = [1, 2, 6, 4, 5, 0, 1, 2]
+print('smooth_a(x, 1): ', smooth_a(x, 1)) 
+print('smooth_a(x, 2): ', smooth_a(x, 2))
+
+print('smooth_a(x, 1) rounded: ', round_list(smooth_a(x, 1), 2))
+
+print('smooth_b(x, 1): ', smooth_b(x, 1))
+print('smooth_b(x, 2): ', smooth_b(x, 2)) 
+
+
+    

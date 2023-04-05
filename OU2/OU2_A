@@ -1,14 +1,6 @@
 #!/usr/bin/env python
 from random import randint
 
-#Syntax: 
-
-#list_name.remove(my_list, number) 
-#Parameters:  obj: It is the object to be removed from the list.
-#obj: object to be removed from the list 
-#Returns:  The method does not return any value but removes the given object from the list.
-#Exception: If the element doesn’t exist, it throws ValueError: list.remove(x): x not in list exception.
-#Note:It removes the first occurrence of the object from the list. 
 def delete(my_list, number):
     if number not in my_list:
         return print('Number not in list')
@@ -21,8 +13,8 @@ print(lst)
 
 iterations = 0
 while len(lst)>0:
-    print(f'{lst}, {iterations}')
+    print(f'{lst}, iterations: {iterations}')
     delete(lst, randint(0,10))
     iterations += 1
 
-print("iterations: ", iterations)
+print(f'iterations : {iterations}')
