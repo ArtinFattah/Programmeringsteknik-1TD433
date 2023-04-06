@@ -1,0 +1,221 @@
+<HTML>
+
+<H3>Lösningsförslag tentamen Programmeringsteknik I, ES, vt2010</H3>
+
+<H4>Uppgift 1</H4>
+<XMP>
+public class StegRaknare {
+  
+  private int antal;
+  private String ägare;
+  private int total;
+  
+  public StegRaknare() {
+    this.antal=0;
+    this.ägare="NoName";
+    this.total=0;
+  }
+  
+   public StegRaknare(String ä, int a, int t) {
+    this.antal=a;
+    this.ägare=ä;
+    this.total=t;
+  }
+   
+   public void stega() {
+     this.antal++;
+     this.total++;
+   }
+
+   public void nollställ() {
+     this.antal=0;
+   }
+  
+   public String toString() {
+     return "Ägare="+this.ägare + ".  Antal steg="+this.antal + ". Totalt antal steg="+this.total;
+   }
+} // Slut klassen StegRaknare
+
+
+// En klass med en mainmetod som testar klassen StegRaknare
+public class Test_StegRaknare
+
+   public static void main( String[] arg) {
+     StegRaknare s = new StegRaknare("Kim",0,0);
+     for (int i=1; i<=1000; i++) {
+       s.stega();
+     }
+     
+     System.out.println(s);
+     s.nollställ();
+     System.out.println(s);
+     for (int i=1; i<=500; i++) {
+       s.stega();
+     }
+       System.out.println(s);
+
+   } // Slut main-metoden
+} // Slut klassen Test_StegRaknare
+</XMP>
+
+<H4>Uppgift 2</H4>
+<B>a-uppgiften</B><BR>
+<XMP>
+public static void main(String[] args) {
+
+   EnKlass e = new EnKlass();
+   int[] x = {4, 5, 6};
+   int tal = 2;
+
+   e.metodA(tal);              // (1)
+
+   // Sats (2) är fel: x[3] existerar inte, ty index är 0-2 i arrayen x
+   e.metodA(x[3]);             // (2)
+
+   e.metodA(x[tal]);           // (3)
+
+   // Sats (4) är fel: metodA kan inte ha en array som parameter
+   e.metodA(x);                // (4)
+
+   // Sats (5) är fel: metodA returnerar inget, dvs kan inte ingå i en addition
+   int y = e.metodA(2) + 7;    // (5)
+
+   int z = e.metodB() + 8;     // (6)
+
+}  // main-metoden
+</XMP>
+
+<P>
+<B>b-uppgiften</B><BR>
+Utskriften blir:
+<XMP>
+x=0.0 y=0.0
+x=10.0 y=30.0
+</XMP>
+
+<P>
+<B>c-uppgiften</B><BR>
+<XMP>
+public class SpecialPartikel extends Partikel {
+   private double vikt;
+   
+   public SpecialPartikel (double x, double y, double r, double v) {
+     super(x,y,r);
+     this.vikt=v;
+   }
+ 
+} // Slut klassen SpecialPartikel
+</XMP>
+
+
+<H4>Uppgift 3</H4>
+<XMP>
+public class Aktie {
+  
+  // Aktiens namn
+  private String id;
+  // Array med kapacitet på 10000 dagars kurser
+  private double [] kurs = new double[10000];
+  // räknare för hur många dagars kurser som är lagrade i arrayen
+  private int dagar;
+  
+  public Aktie () {
+    this.id="NoName";
+    this.dagar=0;
+  }
+  
+  public Aktie (String s, double k) {
+    this.id=s;        // Sätt aktiens namn
+    this.kurs[0]=k;   // Lagra första kursen på index noll i arrayen
+    this.dagar=1;     // Sätt räknaren
+  }
+  
+  // Parametern k är den nya kursen
+  public void nyKurs(double k) {
+    // Om arrayen räcker till...
+    if (kurs.length>this.dagar) {
+        this.kurs[this.dagar]=k; // Lagra kursen k i arrayen
+        this.dagar++;            // Uppdatera räknaren
+    }
+  }
+  
+  public double max () {
+    // Hypotesen är att maxvärdet finns på index noll
+    double max=this.kurs[0];
+    // Loopa igenom alla lagrade kurser och uppdatera värdet på max
+    for (int i=1; i<this.dagar; i++) {
+      if (this.kurs[i]>max) {
+        max=this.kurs[i];
+      }
+    }
+    return max;
+  }
+  
+  public void skrivUt() {
+    // Loopa igenom alla lagrade kurser
+    for (int i=0; i<this.dagar; i++) {
+       System.out.println("Dag:" + i + "  Kurs:"+ this.kurs[i]) ;
+    }
+  }
+  
+} // Slut klassen Aktie
+</XMP>
+
+
+<H4>Uppgift 4</H4>
+<P>
+<B>a-uppgiften</B><BR>
+<XMP>
+ public boolean kollision(Partikel other) {
+      double dx = this.x-other.x;  // Skillnad i x-led
+      double dy = this.x-other.y;  // Skillnad i y-led
+      double dist = Math.sqrt(dx*dx + dy*dy); // Avstånder
+      if (dist< this.r + other.r) {
+        return true;
+      }
+      else {
+        return false;
+      }
+    }
+</XMP>
+
+<P>
+<B>b-uppgiften</B><BR>
+<XMP>
+public static void main (String[] arg) {
+   // Skapa en array med kapacitet för 50 Partikel-objket
+   Partikel [] p = new Partikel[50]; 
+
+   for (int i=1; i<=50; i++) {
+      // Slumpa position och radie
+      double x = Math.random()*100.0; 
+      double y = Math.random()*100.0;
+      double r = 1.0+Math.random()*5.0;
+      p[i-1] = new Partikel(x,y,r);  // Skapa Partikel-objekt på index i-1
+   }  // for i
+
+   int antal=0;  // Räknare för antalet krockar
+   
+   // En dubbelloop för att få till alla kombinationer av krockar
+   // mellan partikel i och partikel j så att
+   // i=0:  j=1...49
+   // i=1:  j=2...49
+   // i=2:  j=3...49
+   // ...
+   // i=47:  j=48...49
+   // i=48:  j=49...49
+   for (int i=0; i<49; i++) {
+      for (int j=i+1; j<50; j++) {
+         if ( p[i].kollision(p[j])) {
+            antal++;
+         }
+      } // for j
+    } // for i
+
+    System.out.println(antal);  
+} // Slut main
+</XMP>
+
+<HR>
+<CENTER>Slut lösningsförslag tentamen Programmeringsteknik I, ES, vt2010</CENTER>
+</HTML>

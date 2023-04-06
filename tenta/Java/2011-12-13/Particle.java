@@ -1,0 +1,67 @@
+import java.awt.*;
+
+public class Particle {
+  private Vector c;     // Center position
+  private Vector v;     // Velocity
+  private double r;     // Radius
+  private boolean dead;
+  
+  public Particle(Vector c, Vector v, double r) {
+    this.c = c.copy();
+    this.v = v.copy();
+    this.r = r;
+    dead = false;
+  }
+  
+  public String toString() {
+    return "P(" + c + ", " + v + ", " + r + ")";
+  }
+  
+  public double getRadius() {
+    return r;
+  }
+  
+  public boolean isDead() {
+    return dead;
+  }
+  
+  public void move() {
+    c.add(v);  // Set new position according to the velocity
+
+    // Handle collision with the black hole
+    if (c.distance(new Vector(0.5, 0.5)) < r + Box.getDeathRadius()) {
+      dead = true;
+      Box.feed(this);
+    }
+    
+    // Handle boundary bouncing
+    if (c.getx() < r && v.getx() < 0) { // left boundary
+      v.setx(-v.getx());
+    }
+    
+    if (c.getx() > 1.-r && v.getx() > 0) { // right boundary
+      v.setx(-v.getx());
+    }
+    
+    if (c.gety() < r && v.gety() < 0) { // upper boundary
+      v.sety(-v.gety()); 
+    }
+    
+    if (c.gety() > 1.-r && v.gety()>0) { // lower boundary
+      v.sety(-v.gety());
+    }
+
+  } 
+ 
+  public void paintComponent(Graphics g) {
+    int ix = (int)(c.getx()*Box.getsize());
+    int iy = (int)(c.gety()*Box.getsize());
+    int ir = (int)(r*Box.getsize());
+    g.drawOval(ix- ir, iy-ir, 2*ir, 2*ir);
+  } 
+}
+    
+    
+    
+    
+    

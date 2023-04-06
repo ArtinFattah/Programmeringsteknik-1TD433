@@ -1,0 +1,105 @@
+/**
+ *  Klassen representerar en bank. 
+ */
+import java.util.Scanner;
+
+public class Bank {
+    private Customer[] customers;      // Kundförteckning
+    private int numberOfCustomers;     // Aktuellt antal kunder
+    private int globalCustomerNumber;  // Globalt kundnummer
+      
+    public Bank() {
+	customers = new Customer[3];
+	numberOfCustomers = 0;
+	globalCustomerNumber = 1;
+    }
+  
+    /**
+     * Skapar ett Bank-objekt och sätter igång menyhanteringen
+     */
+    public static void main(String [] args) {
+	Bank theBank = new Bank();
+	theBank.mainMenue();
+    }
+  
+    /**
+     * Huvudmeny för bankhantering
+     */
+    public void mainMenue() {
+	Scanner sc = new Scanner(System.in);
+	int choice;
+	boolean goOn = true;
+	System.out.println("Välkommen till Ebbe Röds bank");
+	while (goOn) {
+	    System.out.println("\n== Huvudmeny ==");
+	    System.out.println(" (0) Avsluta");
+	    System.out.println(" (1) Lista kunder");
+	    System.out.println(" (2) Hantera kund");
+	    System.out.println(" (3) Skapa kund");
+	    System.out.println(" (4) Avsluta kund");
+	    System.out.print("Ditt val: ");
+	    if (sc.hasNextInt()) {
+		choice = sc.nextInt();
+	    } else {
+		choice = 999;
+	    }
+	    sc.nextLine();
+	    switch (choice) {
+	    case 0:
+		System.out.print("Säkert att du vill avsluta? ");
+		if (sc.nextLine()=="ja") { // Uppgift 4a
+		    goOn = false;
+		}
+		break;
+	    case 1:
+		listCustomers();
+		break;
+	    case 2: 
+		handleCustomer();
+		break;
+	    case 3:
+		createCustomer();
+		break;
+	    case 4:
+		deleteCustomer();
+		break;
+	    default:
+		System.out.println("*** Ogiltigt val!");
+	    }
+	}
+	System.out.println("Tack för denna gång!");
+	return;
+    }
+  
+    /**
+     * Skapar en ny kund med inlästa personuppgifter.
+     * Kundarrayen ökas automatiskt vid behov.
+     */
+    public void createCustomer() {
+	// Uppgift 4 c
+    }
+
+    /**
+     * Förintar en kund. Reglerar skuld eller fordran.
+     */
+    public void deleteCustomer() {...}
+
+    /**
+     * Skriver en förteckning över kunderna
+     */
+    public void listCustomers() {
+	// Uppgift 4 b
+    }
+  
+    /**
+     * Låter användaren välja en kund
+     * @return index för kunden
+     */
+    private int chooseCustomer() {...}
+
+    /**
+     * Väljer ut en enskild kund och anropar 
+     * hanteringsmenyn för denna kund
+     */
+    public void handleCustomer() {...} 
+}

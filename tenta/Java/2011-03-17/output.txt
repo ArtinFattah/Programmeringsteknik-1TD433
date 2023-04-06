@@ -1,0 +1,186 @@
+Välkommen till Ebbe Röds bank
+
+== Huvudmeny ==
+ (0) Avsluta
+ (1) Lista kunder
+ (2) Hantera kund
+ (3) Skapa kund
+ (4) Avsluta kund
+Ditt val: 1
+
+Banken har för närvarande inga kunder
+
+== Huvudmeny ==
+ (0) Avsluta
+ (1) Lista kunder
+ (2) Hantera kund
+ (3) Skapa kund
+ (4) Avsluta kund
+Ditt val: 3
+Kundens namn: Kalle
+Kundens adress:
+
+== Huvudmeny ==
+ (0) Avsluta
+ (1) Lista kunder
+ (2) Hantera kund
+ (3) Skapa kund
+ (4) Avsluta kund
+Ditt val: 3
+Kundens namn: Lisa
+Kundens adress: Storgatan
+
+== Huvudmeny ==
+ (0) Avsluta
+ (1) Lista kunder
+ (2) Hantera kund
+ (3) Skapa kund
+ (4) Avsluta kund
+Ditt val: 3
+Kundens namn: Lotta
+Kundens adress:
+
+== Huvudmeny ==
+ (0) Avsluta
+ (1) Lista kunder
+ (2) Hantera kund
+ (3) Skapa kund
+ (4) Avsluta kund
+Ditt val: 1
+
+Kunder:
+ (1)  1  Kalle
+ (2)  2  Lisa
+ (3)  3  Lotta
+
+== Huvudmeny ==
+ (0) Avsluta
+ (1) Lista kunder
+ (2) Hantera kund
+ (3) Skapa kund
+ (4) Avsluta kund
+Ditt val: 3
+Kundens namn: Pelle
+Kundens adress: Rackarberget
+
+== Huvudmeny ==
+ (0) Avsluta
+ (1) Lista kunder
+ (2) Hantera kund
+ (3) Skapa kund
+ (4) Avsluta kund
+Ditt val: 1
+
+Kunder:
+ (1)  1  Kalle
+ (2)  2  Lisa
+ (3)  3  Lotta
+ (4)  4  Pelle
+
+== Huvudmeny ==
+ (0) Avsluta
+ (1) Lista kunder
+ (2) Hantera kund
+ (3) Skapa kund
+ (4) Avsluta kund
+Ditt val: 4
+
+Kunder:
+ (1)  1  Kalle
+ (2)  2  Lisa
+ (3)  3  Lotta
+ (4)  4  Pelle
+Välj kund (0 för att avbryta): 1
+
+Förintar 1  Kalle
+
+== Huvudmeny ==
+ (0) Avsluta
+ (1) Lista kunder
+ (2) Hantera kund
+ (3) Skapa kund
+ (4) Avsluta kund
+Ditt val: 1
+
+Kunder:
+ (1)  2  Lisa
+ (2)  3  Lotta
+ (3)  4  Pelle
+
+== Huvudmeny ==
+ (0) Avsluta
+ (1) Lista kunder
+ (2) Hantera kund
+ (3) Skapa kund
+ (4) Avsluta kund
+Ditt val: 3
+Kundens namn: Nisse
+Kundens adress: Kantorn
+
+== Huvudmeny ==
+ (0) Avsluta
+ (1) Lista kunder
+ (2) Hantera kund
+ (3) Skapa kund
+ (4) Avsluta kund
+Ditt val: 1
+
+Kunder:
+ (1)  2  Lisa
+ (2)  3  Lotta
+ (3)  4  Pelle
+ (4)  5  Nisse
+
+== Huvudmeny ==
+ (0) Avsluta
+ (1) Lista kunder
+ (2) Hantera kund
+ (3) Skapa kund
+ (4) Avsluta kund
+Ditt val: 4
+
+Kunder:
+ (1)  2  Lisa
+ (2)  3  Lotta
+ (3)  4  Pelle
+ (4)  5  Nisse
+Välj kund (0 för att avbryta): 4^?3
+Ogiltigt val!
+
+Kunder:
+ (1)  2  Lisa
+ (2)  3  Lotta
+ (3)  4  Pelle
+ (4)  5  Nisse
+Välj kund (0 för att avbryta): 3
+
+Förintar 4  Pelle
+
+== Huvudmeny ==
+ (0) Avsluta
+ (1) Lista kunder
+ (2) Hantera kund
+ (3) Skapa kund
+ (4) Avsluta kund
+Ditt val: 1
+
+Kunder:
+ (1)  2  Lisa
+ (2)  3  Lotta
+ (3)  5  Nisse
+
+== Huvudmeny ==
+ (0) Avsluta
+ (1) Lista kunder
+ (2) Hantera kund
+ (3) Skapa kund
+ (4) Avsluta kund
+Ditt val: 0
+Säkert att du vill avsluta? ja
+
+== Huvudmeny ==
+ (0) Avsluta
+ (1) Lista kunder
+ (2) Hantera kund
+ (3) Skapa kund
+ (4) Avsluta kund

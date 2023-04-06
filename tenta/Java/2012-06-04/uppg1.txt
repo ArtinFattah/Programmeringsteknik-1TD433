@@ -1,0 +1,8 @@
+A. lokal variabel	:  5. Deklareras i metodkropp 
+B. instansvariabel	: 11. Kan ha olika värden för oliks objekt 
+C. formell parameter	:  7. Deklareras i metodhuvud
+D. aktuell parameter	: 12. Anges vid metodanrop
+E. while-sats		:  8. En iterationskonstruktion
+F. omslagsklass		: 14. Ingen beskrivning passar bra
+G. primitiv datatyp	:  2. double
+H. villkorsuttryck	:  3. true

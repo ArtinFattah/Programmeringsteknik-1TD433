@@ -1,0 +1,205 @@
+public class BlackHoleSimulation extends JFrame {
+   
+  public static void main(String[] args) {
+    JFrame frame = new JFrame("TheWorld"); 
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setSize(600, 600);
+    frame.setBackground(Color.WHITE);
+    frame.setLayout(new FlowLayout());
+    Box b = new Box(500,0.05);
+    b.fill(100, 0.015);    // 100 particles with radius 0.015
+    frame.add(b);
+    frame.pack();
+    frame.setVisible(true);
+    JOptionPane.showMessageDialog(null, "Start simulation?");
+
+    for (int i=0; i<500; i++) {
+      try {
+        b.step();
+        b.repaint();
+        Thread.sleep(50);
+      } catch(InterruptedException e) {}
+    }
+    JOptionPane.showMessageDialog(null, "Simulation ended");
+    frame.dispose();      
+  } 
+  
+}
+
+public class Box extends JPanel {
+  
+  public static double deathRadius; // Black hole radius 
+  public static int size; // Drawing size of the box
+  
+  ArrayList<Particle> a; // The collection of particles
+  
+  public Box(int sz, double dr) {
+    setPreferredSize(new Dimension(sz+5, sz+5));
+    deathRadius = dr;
+    size = sz;
+    a = new ArrayList<Particle>();
+  }
+  
+  public static double getDeathRadius() {
+    return deathRadius;
+  }
+  
+  public static int getsize() {
+    return size;
+  }
+  
+  /** Feeds the black hole with one particle */
+  public static void feed(Particle p) {
+    double a = (deathRadius*deathRadius +
+                p.getRadius()*p.getRadius())*Math.PI;
+    deathRadius = Math.sqrt(a/Math.PI);  
+  }
+  
+  /** Adds a particle to the box */
+  public void add(Particle p) {
+    a.add(p);
+  }
+  
+  /** Advances all particles one time step */
+  public void step() {
+    for (Particle p : a)
+      p.move();
+    sweep(); // Remove all dead particles
+  }
+  
+  /** Removes all dead particles from the arraylist */
+  private void sweep() {
+      //                           Uppgift 3 c <<<<<<<<<<<<<<<<<<<
+  }
+  
+  /** Fills the box with n random particles of size r */
+  public void fill(int n, double r) {
+    for (int i=0; i<n; i++) {
+      Vector p = new Vector(Math.random(), Math.random());
+      Vector v = Vector.randomVector(0.05*Math.random());
+      add(new Particle(p, v, r));
+    }    
+  }
+  
+  public void paintComponent(Graphics g) {
+    super.paintComponent(g);
+    g.setColor(Color.RED);
+    g.drawRect(0,0,size,size);
+    g.setColor(Color.BLACK);
+    int dr = (int)(deathRadius*size);
+    g.fillOval(size/2-dr, size/2-dr, 2*dr, 2*dr); // Black hole
+    for(Particle p : a) {
+      p.paintComponent(g); // Individual particles 
+    }
+  }
+}
+
+public class Particle {
+  private Vector c;     // Center position
+  private Vector v;     // Velocity
+  private double r;     // Radius
+  private boolean dead;
+  
+  public Particle(Vector c, Vector v, double r) {
+    this.c = c.copy();
+    this.v = v.copy();
+    this.r = r;
+    dead = false;
+  }
+  
+  public String toString() {
+    return "P(" + c + ", " + v + ", " + r + ")";
+  }
+  
+  public double getRadius() {
+    return r;
+  }
+  
+  public boolean isDead() {
+    return dead;
+  }
+  
+  public void move() {
+    c.add(v);  // Set new position according to the velocity
+
+    // Handle collision with the black hole
+    //                                Uppgift 3 b <<<<<<<<<<<<<<
+    
+    // Handle boundary bouncing
+    if (c.getx() < r && v.getx() < 0) { // left boundary
+      v.setx(-v.getx());
+    }
+    
+    if (c.getx() > 1.-r && v.getx() > 0) { // right boundary
+      v.setx(-v.getx());
+    }
+    
+    if (c.gety() < r && v.gety() < 0) { // upper boundary
+      v.sety(-v.gety()); 
+    }
+    
+    if (c.gety() > 1.-r && v.gety()>0) { // lower boundary
+      v.sety(-v.gety());
+    }
+  } 
+ 
+  public void paintComponent(Graphics g) {
+    int ix = (int)(c.getx()*Box.getsize());
+    int iy = (int)(c.gety()*Box.getsize());
+    int ir = (int)(r*Box.getsize());
+    g.drawOval(ix- ir, iy-ir, 2*ir, 2*ir);
+  } 
+}
+    
+public class Vector {
+  private double x;
+  private double y;
+  
+  public Vector(double x, double y) {
+    this.x = x;
+    this.y = y;
+  }
+  
+  public String toString() {
+    return "<" + x + ", " + y + ">";
+  }
+  
+  /** Modify this vector by adding v */
+  public void add(Vector v) {
+    x += v.x;
+    y += v.y;
+  }
+  
+  /** Returns the distance from this vector (point) to vector (point) v */
+  public double distance(Vector v) {
+    return Math.sqrt((x-v.x)*(x-v.x) + (y-v.y)*(y-v.y));
+  }
+  
+  public double getx() {
+    return x;
+  }
+  
+  public double gety() {
+    return y;
+  }
+  
+  public void setx(double x) {
+   this.x = x; 
+  }
+  
+  public void sety(double y) {
+    this.y = y;
+  }
+  
+  /** Creates and returns a copy of this vector */
+  public Vector copy() {
+      //                               Uppgift 3a <<<<<<<<<<<<<<<<<<
+  }
+  
+  /** Creates a vector of specified length pointing in a random direction */
+  public static Vector randomVector(double len) {
+    double angle = Math.random()*2.*Math.PI;
+    return new Vector(Math.cos(angle)*len, Math.sin(angle)*len);
+  }
+  
+}

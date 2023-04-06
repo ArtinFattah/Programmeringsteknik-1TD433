@@ -1,0 +1,49 @@
+public class Vector {
+  private double x;
+  private double y;
+  
+  public Vector(double x, double y) {
+    this.x = x;
+    this.y = y;
+  }
+  
+  public String toString() {
+    return "<" + x + ", " + y + ">";
+  }
+  
+  public void add(Vector v) {
+    x += v.x;
+    y += v.y;
+  }
+  
+  public double distance(Vector v) {
+    return Math.sqrt((x-v.x)*(x-v.x) + (y-v.y)*(y-v.y));
+  }
+  
+  public double getx() {
+    return x;
+  }
+  
+  public double gety() {
+    return y;
+  }
+  
+  public void setx(double x) {
+   this.x = x; 
+  }
+  
+  public void sety(double y) {
+    this.y = y;
+  }
+  
+  public Vector copy() {
+    return new Vector(x,y);
+  }
+  
+  public static Vector randomVector(double len) {
+    double angle = Math.random()*2.*Math.PI;
+    return new Vector(Math.cos(angle)*len, Math.sin(angle)*len);
+  }
+
+  
+}

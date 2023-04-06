@@ -1,0 +1,78 @@
+public class Container {
+  private int[] box;
+  private int n;
+  
+  public Container(int size) {
+    box = new int[size];
+    n = 0;
+  }
+  
+  public String toString() {
+    String s = "";
+    for (int i= 0; i<n; i++)
+      s = s + " " + box[i];
+    return s;
+  }
+  
+  public void put(int v) {
+    if (n>box.length) {
+      System.out.println("Container overflow");
+    } else {
+      box[n++] = v;
+    }
+  }
+  
+  public int remove() {
+    if (n==0) {
+      System.out.println("Container underflow");
+      return 0;
+    } else {
+      return box[--n];
+    }
+  }
+  
+  public int remove(int i) {
+    if (i<0 || i>=n) {
+      System.out.println("Remove outside bounds");
+      return 0;
+    } else {
+      int v = box[i];
+      box[i] = box[--n];
+      return v;
+    }
+  }
+  
+  public int removeSmallest() {
+    if (n<0) {
+      System.out.println("Empty container");
+      return 0;
+    } else {
+      int i = 0;
+      for (int j=1; j<n; j++) {
+        if (box[j] < box[i])
+          i = j;
+      }
+      int v = box[i];
+      box[i] = box[--n];
+      return v;
+    }
+  }
+              
+  
+  public static void main(String[] a) {
+    Container c = new Container(5);
+    System.out.println(c);
+    c.put(2);
+    System.out.println(c);
+    c.put(1);
+    c.put(4);
+    c.put(7);
+    System.out.println(c);
+    System.out.println("Last out: " + c.remove());
+    System.out.println(c);
+    System.out.println("First out: " + c.remove(0));
+    System.out.println(c);
+    System.out.println("Smallest : " + c.removeSmallest());
+    System.out.println(c);
+  }
+}

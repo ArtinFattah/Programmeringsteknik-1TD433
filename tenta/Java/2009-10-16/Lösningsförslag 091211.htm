@@ -1,0 +1,188 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title>Lösningsförslag 091211</title>
+</head>
+
+<body>
+<h1>Lösningsförslag 091211</h1>
+<h3>Uppgift 1</h3>
+<xmp>public class Bil {
+    private int hastighet;
+    private String färg;
+    private int växel;
+    private String märke;
+
+    public Bil() {
+	this.färg = "Röd";
+	this.märke = "Volvo";
+	this.växel = 1;
+	this.hastighet = 20;
+    }
+    
+    public Bil(String f, String m, int v, int h) {
+	this.färg = f;
+	this.märke = m;
+	this.växel = v;
+	this.hastighet = h;
+    }
+
+    public void gasa() {
+	this.hastighet = this.hastighet + 10;
+    }
+
+    public void bromsa() {
+	this.hastighet = hastighet - 8;
+	if (this.hastighet < 0) {
+	    this.hastighet = 0;
+	}
+    }
+
+    public void växla(int v) {
+	if (v >= -1 && v <= 5) {
+	    this.växel = v;
+	}
+    }
+
+    public String toString () {
+	String s = "";
+	s = s +"Märke: " + this.märke;
+	s = s +"\nFärg: " + this.färg;
+	s = s +"\nHastighet: " + this.hastighet + " km/tim";
+	s = s + "\nVäxel: " +  this.växel;
+	return s;
+    }
+
+    public static void main(String [] args) {
+	Bil b1 = new Bil();
+	Bil b2 = new Bil("Grön", "Fiat", 4, 100);
+	b1.gasa();
+	b1.gasa();
+	for (int i = 0; i < 6; i++) {
+	    b1.bromsa();
+	}
+	b2.växla(5);
+	System.out.println(b1);
+	System.out.println();
+	System.out.println(b2);
+    }
+}
+</xmp>
+<h3>Uppgift 2a</h3>
+<xmp>System.out.print("Ge ett tal: );
+String svar1, svar2;
+Scanner scan = new Scanner(System.in);
+int tal = nextInt();
+if (tal%5 == 0 && tal%6 == 0) {
+  svar1 = "Ja";
+else {
+  svar1 = "Nej";
+}
+if (tal%5 == 0 || tal%6 == 0) {
+  svar2 = "Ja";
+else {
+  svar2 = "Nej";
+}
+System.out.println("Är " + tal + " delbart med 5 och 6? " + svar1);
+System.out.println("Är " + tal + " delbart med 5 och 6? " + svar2);
+</xmp>
+<h3>b</h3>
+<xmp>Resultat: 0
+Resultat: 0
+Resultat: 0
+Resultat: 1
+Resultat: 1
+Resultat: 1
+Resultat: 2
+</xmp>
+<h3>c</h3>
+<XMP>
+a[0] = 1, a[1] = 2
+</xmp>
+<h3>Uppgift 3</h3>
+<xmp>public class StatistikTest {
+
+  public static void main(String[] args) {
+    Statistik stat = new Statistik();
+
+    double max, min, medel;
+
+    max = stat.beräknaMax();
+    min = stat.beräknaMin();
+    medel = stat.beräknaMedel();
+
+    System.out.println("Max = " + max +
+                       "\nMin = " + min +
+                       "\nMedel = " + medel);
+  }
+}
+
+class Statistik {
+  private double[] försäljning = 
+            {1,2,3,4,5,6,7,8,9,10,11,12};
+
+  public double beräknaMax() {
+    double res=this.försäljning[0];
+    for(int i=1; i<this.försäljning.length; i++) {
+      if(this.försäljning[i] > res) {
+        res = this.försäljning[i];
+      }
+    }
+    return res;
+  }
+
+  public double beräknaMin() {
+    double res=this.försäljning[0];
+    for(int i=1; i<this.försäljning.length; i++) {
+      if(this.försäljning[i] < res) {
+        res = this.försäljning[i];
+      }
+    }
+    return res;
+  }
+
+  public double beräknaMedel() {
+    double res=0;
+    for(int i=0; i<this.försäljning.length; i++) {
+        res = res + this.försäljning[i];
+    }
+    return res/this.försäljning.length;
+  }
+}
+</xmp>
+<h3>Uppgift 4</h3>
+<xmp>
+public class PaddTest {
+    public static void main(String[] args) {
+        Padda[] allaPaddor = new Padda[10];
+
+	for (int i=0; i<10; i++) {
+	    allaPaddor[i] = new Padda();
+	}
+	for (int i = 0; i < 10; i++) {
+	    for (int j = i+1; j < 10; j++) {
+		if (allaPaddor[i].möter(allaPaddor[j])) {
+		    System.out.println(i + " och " + j + " möts.");
+		}
+	    }
+	}
+    }
+}
+
+class Padda {
+    private int xKoord, yKoord;
+
+    public Padda() {
+	this.xKoord = (int)(Math.random()*100);
+	this.yKoord = (int)(Math.random()*100);
+    }
+
+    public boolean möter(Padda p) {
+	int dx = this.xKoord - p.xKoord;
+	int dy = this.yKoord - p.yKoord;
+	return dx*dx + dy*dy < 100;
+    }
+}
+</xmp>
+
+<hr>
+</body> </html>

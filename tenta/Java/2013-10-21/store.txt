@@ -1,0 +1,36 @@
+Java Direkt
+Skansholm
+;
+Java Software Solutions
+Lewis
+Loftus
+;
+Introduction to Computing
+Ericson
+Guzidal
+;
+Kallocain
+unknown
+Boye
+;
+Liftarens guide till galaxen
+Adams
+;
+Restaurangen vid slutet av universum
+Adams
+;
+The Art of Computer Programming, vol 1
+Knuth
+;
+Structure and Interpretation of Computer Programs
+Abelson
+Sussman
+;
+Concrete Mathematics
+Graham
+Knuth
+Patashinik
+;
+TheTeXbook
+Knuth
+;

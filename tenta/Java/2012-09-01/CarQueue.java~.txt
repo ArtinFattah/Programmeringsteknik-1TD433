@@ -1,0 +1,25 @@
+import java.util.ArrayList;
+
+public class CarQueue {
+  private ArrayList<Car> theQ;
+  
+  public CarQueue() {
+    theQ = new ArrayList<Car>();
+  }
+  
+  public void put(Car c) {
+    theQueue.add(c);
+  }
+  
+  public Car get() {
+    return theQueue.remove(0)
+  }
+  
+  public String toString() {
+    String s = "";
+    for (int i=0; i<theQueue.size(); i++)
+      s += theQueue.get(i) + " ";
+    return "[" + s + "]";
+  }
+   
+}

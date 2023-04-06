@@ -1,0 +1,410 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<BODY BGCOLOR="white">
+<FONT SIZE=2><B>
+Uppsala universitet
+<BR>Institutionen för informationsteknologi
+</FONT></B>
+<BR><BR>
+<CENTER>
+
+<BR>
+<H2>
+Tentamen i Programmeringsteknik 1, <bR>
+Matematikkand, Fysikkand, Elektro och Fristående,<br>  
+2011-10-25
+
+</H2>
+
+
+</CENTER>
+
+<ul>
+<li>Skrivtid:  14.00-17.00
+<li>Hjälpmedel
+ <oL>
+ <LI>Kurslitteratur, en av följande:
+  <ul>
+   <li> Lewis & Loftus, Java Software Solutions
+   <li> Skansholm, Java Direkt
+   <li> Guzdial & Ericson, Intrododuction to computing & programming.
+  </UL>
+ <li>Penna, radergummi, linjal.
+ </ol>
+<p>
+<li> Tentamen består av fyra uppgifter och maxpoängen är 24.
+<li> För att bli godkänd på tentamen (betyg 3) krävs minst 15 poäng
+<li> För att få betyg 4 på tentamen krävs minst 18 poäng.
+<li> För att få betyg 5 på tentamen krävs minst 21 poäng.
+</UL>
+<p>
+
+Instruktioner:
+
+<ul>
+<li><b>Det finns ett referensexemplar av en lärobok att titta i hos skrivningsvakten. </B>
+<li>Programmen skall vara skrivna i Java om inte annat anges.
+<li>Programmen skall vara skrivna med vettig layout och förståeliga. Tydliggör gärna matchande måsvingar.
+<li>Skriv varje uppgift på nytt papper.
+<li>Skriv inte på baksidan.
+<li>Använd inte rödpenna.
+<li>Läs uppgifterna noga så du vet vad som skall göras.
+<li>Gör inte mer än det som efterfrågas.
+<li>Även ofullständiga lösningar och/eller lösningsskisser kan ge poäng om de visar att du tänkt rätt.
+<li>Läs igenom uppgiften igen när du löst den så att ser att du verkligen gjort rätt saker.
+<li>import-satser behöver inte skrivas.
+</UL>
+
+<br><br>
+
+
+<center><P>Lycka till!  <BR>  <BR>
+<I>Anna  och Torsten</I></center>
+
+<pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</PRE>
+
+<newpage>
+
+
+    <h3>Uppgift 1 (6p)</h3>
+a) Delar av klassen <tt>Calculate</TT> visas nedan. Det saknas en metod <tt>minMax</TT> som ska hitta det största och det minsta värdet i arrayen <tt>month</TT>, och sedan skriver ut dessa.  
+
+<pre>
+import java.util.*; 
+
+public class Calculate { 
+   private int[] month = new int[12];
+ 
+   //Metoden minMax skall ligga här
+
+   public void mataIn() {
+      Scanner sc = new Scanner(System.in);
+      System.out.println("Mata in "+month.length+" tal:");
+      for (int i = 0; i < month.length; i++) {
+         month[i] = sc.nextInt();
+      }
+   }
+
+   public static void main(String[] arg) { 
+      Calculate c = new Calculate();   
+      
+      c.mataIn();
+      c.minMax(); 
+   } 
+} 
+</PRE>
+
+Din uppgift är att sätta ihop metoden <tt>minMax</TT> genom att välja från de 8 satsparen (1 - 8) nedan. Under kodsatser finns en figur med åtta linjer som ska fyllas i med kod. På varje linje ska det stå en sats. Från varje par ska du välja en sats (A eller B). Placera satserna du väljer i rätt ordning så att du får javakoden till metoden <tt>minMax</TT> som går att kompilera utan fel och som fungerar enligt beskrivningen ovan. Det kan finnas mer än en fungerande lösning.
+
+<pre>
+   1. A. System.out.println("Största värdet="+large+", minsta="+small); 
+      B. return large, small; 
+
+   2. A. public void minMax() { 
+      B. public int minMax() { 
+
+   3. A. if (month[i] > large) 
+      B. if (month[i] < large) 
+
+   4. A. int small, large; 
+      B. int small = month[0], large = month[0]; 
+
+   5. A. large = month[i]; 
+      B. month = large; 
+
+   6. A. for (int i = 1; i <= month.length; i++) { 
+      B. for (int i = 0; i < month.length; i++) { 
+
+   7. A. month[i] = small; 
+      B. small = month[i]; 
+
+   8. A. if (month[i] < small) 
+      B. if (month < small) 
+
+
+------------------------------------------- {
+   
+   ----------------------------------------
+
+   ----------------------------------------{
+   
+      ----------------------------------------
+      
+         -------------------------------------
+
+      ----------------------------------------
+
+         -------------------------------------
+
+   }
+
+   ---------------------------------------
+
+
+
+}
+</PRE>
+
+<!--
+  public void minMax() { 
+    int small = month[0], large = month[0]; 
+    for (int i=0; i<month.length; i++) { 
+      if (month[i] > large) 
+        large = month[i]; 
+      if (month[i] < small) 
+        small = month[i];  
+    } 
+    System.out.println("Största värdet="+large+", minsta="+small); 
+  } 
+-->
+
+<p> 
+
+b) Antag att följande kodfragment finns i ett program som går att köra. Skriv exakt vad programfragmentet kommer att skriva ut på skärmen om vi kör koden. 
+<pre>
+int x = 10; 
+while (x > 0) { 
+   x = x - 3; 
+   System.out.println(x); 
+} 
+</PRE>
+
+<p>
+
+c) Antag att följande sats finns i ett program som går att köra: <BR><BR>
+
+<tt>int x = (int)(Math.random()*10); </TT><br><BR>
+
+Skriv de satser som testar om heltalsvariabeln <tt>x</TT> ligger i intervallet 4 till 7, inklusive gränserna. Koden skall i så fall skriva ut "OK" på skärmen. Du behöver alltså inte skriva ett helt program, utan bara den kod som gör de saker som uppgiften kräver. <p>
+
+<pre>
+
+
+
+
+
+
+
+</PRE>
+<!--
+=====================================================================
+-->
+    <h3>Uppgift 2 (6p)</h3>
+
+Skriv en klass <tt> Sphere</TT> som representerar en sfär som har instansvariabler för positionen (x,y,z) och radien. Klassen skall dessutom innehålla:
+
+<ul>
+<li> En parameterlös konstruktor som skapar en sfär med positionen i origo och 
+med radien 1.0.
+<li> En konstruktor som har fyra parametrar för att skapa en sfär i en given position och med en given radie.
+<li> En metod <tt> volume</TT> som beräknar och returnerar sfärens volym.
+      Volymen för en sfär är: <br> <br>
+
+<img src="volym.gif"}
+<BR><BR>
+
+<li> En metod <tt> setRadius</TT> med en parameter som sätter ett nytt värde på
+ radien
+<li> En metod <tt>getRadius</TT> som returnerar värdet på radien
+<li> En <tt>toString</TT>-metod som returnerar en sträng som innehåller värdet av alla instansvariabler. Strängen ska ge en förklarande text så att man förstår vad värdena betyder, t ex så här: <br>
+<tt> x=1.0, y=2.0, z=3.0, r=4.0</TT> 
+</UL>
+
+Skriv också en klass <tt>TestSphere</TT> som bara innehåller en <tt>main</tt>-metod som gör följande:
+<ul>
+<li> Skapar en sfär <tt>s1</TT> med den parameterlösa konstruktorn
+<li> Skapar en sfär <tt>s2</TT> med positionen x=1.0, y=2.0, z=3.0 och radien 4.0
+<li> Ändrar värdet på <tt>s1</TT>'s radie till 14.0 genom att anropa metoden <tt>setRadius</TT>.
+<li> Beräknar och skriver ut <tt>s1</TT>'s volym genom att anropa metoden <tt>volume</TT>.
+<li> Tar reda på värdet av <tt>s2</TT>'s radie genom att anropa metoden <tt>getRadius</TT>. Main-metoden skall skriva ut värdet.
+<li> Skriver ut <tt>s2</TT> med hjälp av  <tt>toString</TT>-metoden. 
+</UL>
+
+<pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</PRE>
+
+<!--
+=====================================================================
+-->
+    <h3>Uppgift 3 (6p)</h3>
+Det finns över en miljon bilder tagna på galaxer i universum. En uppgift för forskare i astronomi är att klassificera galaxerna utifrån deras utseende med avseende på vissa kriterier. Det kan vara svårt för en dator att göra klassifieringar som däremot det mänskliga ögat klarar, men man har beräknat att det skulle ta en student 3-5 år att klassificera bilderna enligt vissa önskade kriterier, om personen arbetade 7 dagar i veckan, 24 timmar per dag. <br>
+ <br>
+Astronomer vid Oxford universitet har bett allmänheten om hjälp vid klassificeringen. Projektet som initierades 2007 kallas Galaxy Zoo, se http://en.wikipedia.org/wiki/Galaxy_Zoo <!--I artikeln står det: <br>
+Scientists are increasingly finding it difficult to cope with what has been called the "Data Deluge", where modern research is producing vast sets of information ... Often the teams involved don't have the time, resources or brainpower to analyse it all ... Kevin Schawinski, an astrophysicist atOxford University and co-founder of Galaxy Zoo, described the problem that led to Galaxy Zoo's creation when he was set the task of classifying the morphology of ~1 million galaxies by eye that had been imaged by the Sloan Digital Sky Survey at the Apache Point Observatory in New Mexico, United States.<br>
+--> 
+<br>
+Projektet är internetbaserat, och deltagarna klassificerar bilder genom att klicka på olika alternativ när de ser en bild. <!--Initialt hoppades man att 20-30.000 personer skulle delta, men redan i augusti 2007 hade 80.000 personer klassificerat mer än 10 miljoner bilder av galaxer. 
+-->
+Målet var initialt att varje bild skulle klassificeras av 20 olika användare för att få tillförlitliga data.
+<!-- Artikeln säger att ``The importance of multiple classifications is that it will enable us to build an accurate and reliable database, that will meet the high standards of the scientific community''. 
+-->
+<br>
+ <br>
+En klassificering som gjordes var att bestämma om en bild visade en elliptisk galax, en spiralgalax som går medurs, eller en spiralgalax som går moturs. <!-- Den klassificeringen visade att de personer som utförde klassiciferingen var lika bra på att klassificera som astronomerna själva. -->
+<p>
+<i><b>Din uppgift</B></I> är att skriva klart klassen <TT>Galaxer</TT> som ska undersöka klassificeringen av 10.000 galaxer för ett visst forskningsprojekt. Klassen har tre instansvariabler som motsvarar klassificeringen ovan: <tt>ellips</TT>, <tt>medurs</TT> och <tt>moturs</TT>, som är arrayer som ska kunna innehålla 10.000 heltal. Varje element i arrayerna motsvarar en av de 10.000 bilderna på galaxer i studien. När en galax blir klassificerad av en person kommer motsvarande element i den array som motsvarar personens val att räknas upp. Varje galax klassificeras av precis 20 personer. Exempel: <BR>
+<br>
+
+<img src="ellipsArray.gif">
+
+<BR>
+
+Ovan illustreras början på arrayerna där varje element motsvarar en bild. Arrayerna har alltså 10.000 element var men bara de första elementen visas. 2 personer anser att bild 1 visar en elliptisk galax, 16 att den är en spiralgalax medurs och 2 personer anser att den är en spiralgalax moturs. Ingen anser att bild 2 är av typen elliptisk eller moturs - alla 20 personer anser att bild 2 visar en spiralgalax moturs, osv. Summan av elementen på motsvarande positioner i de tre arrayerna blir alltså alltid 20.
+<p>
+Klassen ska alltså innehålla:<br>
+
+a) De tre instansvariablerna som beskrivs ovan, <tt>ellips</TT>, <tt>medurs</TT> och <tt>moturs</TT>. <p>
+
+b) En konstruktor som skapar de tre arrayerna. <p>
+
+c) En metod <tt>public void mataIn(int bildNummer, int galaxTyp)</TT> som har två parametrar. Den första parametern talar om vilken bild man håller på att klassificera, t ex den första bilden. Den andra parametern talar om vilket val som gjorts, dvs vilken av de tre arrayerna som valts: om parametern <tt>galaxTyp</TT> har värdet 1 betyder det att personen valt elliptisk galax, om parametern är 2 är valet spiralgalax medurs, och 3 spiralgalax moturs. Valt element i vald array räknas upp med ett. <P>
+
+d) Vidare ska klassen ha en metod <tt>elliptiskaGalaxer</TT> som kontrollerar om någon eller några bilder är klassificerade av samtliga 20 personer som elliptiska. Metoden ska skriva ut numret på de bilder som har 100% samstämmighet att de visar elliptiska galaxer. Ovan ser vi att bild 3 är klassificerad av samtliga 20 personer som elliptisk. Metoden returnerar inget värde.  <br>
+<br><br>
+
+e) Klassen ska även ha en metod <TT>antalAvTyp</TT> som har två parametrar: en som motsvarar hur många personer som krävs för att man ska anse att det är en viss galaxtyp, och en parameter som talar om vilken galaxtyp man vill undersöka, dvs om man är intresserad av elliptiska galaxer, spiralgalaxer medurs eller spiralgalaxer moturs.  Om t ex den första parametern är 18 och den andra parametern är 1 ska metoden gå igenom arrayen <tt>ellips</TT> och beräkna hur många av bilderna som valts av 18 personer eller fler. Detta antalet ska returneras.  <br> <br> <br>
+<!--
+<br><br>
+e) Det ska även finnas en metod <tt>bildTyp</TT> som för en given bild kontrollerar de tre arrayerna och bestämmer vilken typ av galax bilden visar genom att avgöra vilken array som har högst värde. Bildnumret skickas som parameter. Metoden skriver ut information om vilken galaxtyp bilden visar. Om mer än en array har samma högsta värde skrivs texten "Obestämbar" ut. I vårt exempel kommer det för bild 4 att skrivas ut "Bild 4 visar en elliptisk galax" eftersom 19 personer ansett det, medan det för bild 7 kommer att skrivas ut "Bild 7 är obestämbar".
+--> 
+<!--
+Klassen ska innehålla en metod <tt>public void mataIn(int bildNummer, int galaxTyp)</TT> som har två parametrar. Den första parametern talar om vilken bild man håller på att klassificera, t ex den första bilden som ligger på index 0. Den andra parametern talar om vilket val som gjorts, dvs vilken av de tre arrayerna som valts.
+<p>
+Vidare ska klassen ha en metod <tt>elliptiskaGalaxer</TT> som kontrollerar om någon eller några galaxer är klassificerade av samtliga 20 personer som elliptiska. Metoden ska skriva ut index för de galaxer som har 100/% samstämmighet att de är elliptiska. I bilden ovan ser vi att galax 3 (inex 2) och galax 7 (index 6) är klassificerade av samtliga 20 personer som elliptiska. Du kan anta att 20 personer matat in värden för alla 10.000 galaxerna.
+<p>
+Klassen skall även ha en metod <tt>troligenElliptisk</TT> som tar en parameter som motsvarar hur många personer som ska ha valt elliptisk för att man ska räkna galaxen som en sådan. Om t ex parametern är 18 kommer galaxerna på index 2, 3, 5 och 6 att anses vara elliptiska i exemplet ovan. Metoden returnerar antalet galaxer som troligen är elliptiska enligt kriteriet som ges av aparmetern.
+<p>
+Det skall även finnas en metod <tt>galaxTyp</TT> som för en given galax som skickas som parameter, går igenom de tre arrayerna och kontrollerar vilken som har högst värde samt skriver ut det. Om man t ex vill undersöka vilken typ den femte galaxen har, tittar man på index 4 i alla tre arrayer. Om då arrayen <tt>spiralMedurs</TT> har högst värde skrivs texten "Spiralgalax, medurs" ut. Om mer än en array har samma högsta värde skrivs texten "Obestämbar" ut. I vårt exempel kommer det för index 3 att skrivas ut att galaxen är elliptisk eftersom 19 personer ansett det. Bara en person har valt att den fjärde galaxen är en spiralgalax som går medurs, eller en spiralgalax som går moturs.
+<p>
+Skriv sist en main-metod som ... BEHÖVS DET??
+-->
+<!--
+=====================================================================
+-->
+
+    <h3>Uppgift 4 (6p)</h3>
+Antag att det i en population finns ett antal individer och att varje individ har en identitet och en uppsättning av egenskaper. Varje egenskap har ett värde som kan vara 0-9. Antag också att antalet egenskaper alltid består av 10 st värden.  Inom populationen ska vi nu matcha ihop par av individer som passar bäst, dvs vars egenskaper är mest lika.
+
+<p>
+Ett exempel: <BR>
+En individ A kan ha följande egenskapsvärden:  9, 0, 0, 2, 3, 7, 0, 9, 5, 5. <BR>
+En individ B kan ha följande egenskapsvärden:  9, 0, 0, 1, 3, 7, 0, 9, 5, 8. <BR>
+Matchningen beräknas genom att vi summerar alla kvadrater på skillnaderna mellan värdena för individerna. En matchning mellan individ A och B ger matchningsvärdet 10 eftersom:  <BR> 
+<tt>(9-9)<sup>2</sup> + (0-0)<sup>2</sup>  +  (0-0)<sup>2</sup> + (2-1)<sup>2</sup>  + (3-3)<sup>2</sup> + (7-7)<sup>2</sup>  + (0-0)<sup>2</sup> + (9-9)<sup>2</sup> + (5-5)<sup>2</sup> + (5-8<sup>)2</sup>  = 1+9=10</TT>
+<p>
+En <i><B>simulering</B></I> av matchning i en population med 50 st individer ska utföras.  Populationen ska först skapas där varje individ får en identitet och tio st egenskapsvärden. Därefter skall det par av individer som har lägsta matchningsvärdet skrivas ut.  
+<p> 
+För simuleringen behövs tre klasser:  <tt>Individ</TT>, <tt>Population</TT> och <tt>SimuleraMatchning</TT>.   Klassen <tt>SimuleraMatchning</TT> som bara innehåller en <tt>main</TT>-metod som utför själva simuleringen är given:
+
+<xmp>
+public class SimuleraMatchning {
+  public static void main (String[] arg ) {
+    // Skapa en population som kan innehålla 50 individer
+    Population pop = new Population(50);
+    Individ ny;
+    String id, id1, id2;
+    int [] egenskaper = new int[10];
+
+    int antal=50;
+    for (int i=0; i<antal; i++) {
+      id = "Kim"+i;
+      for (int j=0; j<10; j++) {
+         egenskaper[j]= (int) (9*Math.random()+1);
+      }
+      // Skapa en invidid
+      ny = new Individ(id, egenskaper);
+      // Lägg in individen i populationen
+      pop.läggIn(ny);
+    }
+    int m, index1 = -1, index2 = -1, min = 10000;
+    for (int i=0; i<antal-1; i++) {
+      for (int j=i+1; j<antal; j++) {
+        // Beräkna matchningsvärde mellan individ i och j
+        m = pop.matchningsVärde(i,j);
+        if (m<min) {
+          index1=i;
+          index2=j;
+          min=m;
+        } // if
+      } // j-loopen  
+    } // i-loopen
+    if (index1>=0) {
+      // Ta reda på individernas identitet
+      id1=pop.getIndivid(index1).getId();
+      id2=pop.getIndivid(index2).getId();
+      System.out.println(id1 + " och " + id2 + " passar bäst. " + 
+                               " Matchningsvärdet="+min);
+    } // if
+  }  // main
+} // SimuleraMatchning
+</xmp>
+Ett exempel på en programkörning:
+<pre>
+Kim20 och Kim34 passar bäst.  Matchningsvärdet=13
+</pre>
+
+Klassen Individ finns given som ett klassdiagram:
+<br><br>
+<img src="Individ_UML.gif">
+<br><br>
+<!--
+<PRE>
+____________________________________
+Individ
+====================================
+-id:String
+-egenskap: int[]
+____________________________________
++Individ()
++Individ(ident:String, eg:int[])
++matchningsVärde(annan:Individ):int
++getId():String
+____________________________________
+</PRE>
+-->
+<b>Uppgift:</B><p>
+a) Skriv klassen <tt>Individ</TT> i java så att den passar klassdiagrammet.<br><br>
+b) Skriv klassen Population i java så att den passar den givna mainmetoden och klassen Individ. 
+
+
+
+
+</BODY>
+</HTML>

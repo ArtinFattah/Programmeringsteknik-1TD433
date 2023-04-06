@@ -1,0 +1,215 @@
+<HTML>
+
+<H3>Lösningsförslag tentamen Programmeringsteknik I, 2010-10-19</H3>
+
+<H4>Uppgift 1</H4>
+<XMP>
+public class Badkar {
+  
+ private int maxliter;
+ private int aktliter;
+ private String id;
+ 
+ public Badkar () {
+   this.maxliter=180;
+   this.aktliter=0;
+   this.id="none";
+ }
+ 
+  public Badkar (int m, String i) {
+   this.maxliter=m;
+   this.aktliter=0;
+   this.id=i;
+ }
+ 
+  public void fyll(int v) {
+    if (this.aktliter+v<this.maxliter) {
+      this.aktliter=this.aktliter+v;
+    }
+  }
+  
+ public void töm() {
+      this.aktliter=0;
+  }
+ 
+  public double getFyllnadsgrad() {
+    return 100.0*this.aktliter/this.maxliter;
+  }
+  
+  public String toString() {
+    String s;
+    s = "Badkaret " + id + ". Kapacitet="+maxliter + ". Fylld med " + aktliter + " liter";
+    return s;
+  }
+  
+} // Slut klassen Badkar
+
+
+public class TestBadkar {
+  
+  public static void main (String[] arg) {
+    Badkar b1 = new Badkar(200,"BADTUNNAN");
+    System.out.println(b1);
+    b1.fyll(180);
+    double proc = b1.getFyllnadsgrad();
+    System.out.println("Nu fyllt till " + proc + " procent");
+    b1.töm();
+    b1.fyll(50);
+    System.out.println(b1);
+  }
+
+} // Slut klassen TestBadkar
+  
+ </XMP>
+
+<H4>Uppgift 2</H4>
+<B>a-uppgiften</B><BR>
+Följande satser är fel:
+<UL>
+<LI>(1): Finns inget objekt <CODE>Boll</CODE> och det finns ingen metod <CODE>flytta</CODE> med fyra parametrar.
+<LI>(3): Metoden <CODE>flytta</CODE> är en void-metod (returnerar inget värde som kan skrivas ut)
+<LI>(6): Variablerna x,y,z existerar ej.
+<LI>(7): Objektet b2 är null.
+</UL> 
+
+<P>
+<B>b-uppgiften</B><BR>
+<XMP>
+    System.out.println("Hur många heltal vill du läsa in?");
+    int antal = scan.nextInt();
+    int []tal = new int[antal];
+    for (int i=0; i<antal; i++) {
+      tal[i]=scan.nextInt();
+    }
+    System.out.println("Talen i omvänd ordning är:");
+    for (int i=antal-1; i>=0; i--) {
+      System.out.println(tal[i]);
+    }
+</XMP>
+
+<P>
+<B>c-uppgiften</B><BR>
+<XMP>
+v4 = v1.add ( v2.add(v3) );
+
+Eller alternativt t.ex.:
+Vektor vt = v1.add(v2);
+v4 = vt.add(v3);
+</XMP>
+
+
+<H4>Uppgift 3</H4>
+<XMP>
+public class MatchResultat {
+  
+  private int [] gjorda = new int[100];
+  private int [] insläppta = new int[100];
+  private int antal=0;
+  
+  public MatchResultat() {};
+  
+  public void nyttResultat(int g, int i) {
+   gjorda[antal]=g;
+   insläppta[antal]=i;
+   antal++;
+  }
+
+  public int poäng () {
+    int sum=0;
+    for (int i=0; i<antal; i++) {
+      if (gjorda[i]>insläppta[i]) {
+        sum=sum+3;
+      }
+      else
+        if (gjorda[i]==insläppta[i]) {
+        sum=sum+1;
+      }
+    }
+    return sum;
+  }
+
+}
+</XMP>
+
+
+<H4>Uppgift 4</H4>
+<P>
+<B>a-uppgiften</B><BR>
+<XMP>
+
+import java.util.Scanner;
+  
+public class TestBostadsRegister {
+  
+  public static void main (String[] arg) {
+    Scanner scan = new Scanner(System.in);
+    
+    BostadsRegister breg = new BostadsRegister();
+   
+    System.out.println("Antal bostäder att lägga in?");
+    int n = scan.nextInt();
+
+    for (int i=1; i<=n; i++) {
+       Bostad b = new Bostad(); // (1)
+       b.läs();                 // (2)
+       // Alternativt istf (1) och (2) så här:
+       // String adress = scan.nextLine();
+       // int rum = scan.nextInt();
+       // double yta = scan.nextDouble();
+       // Bostad b = new Bostad(rum,yta,adress);
+       
+       breg.nyBostad(b);
+    }
+    
+    System.out.println("Alla bostäder:");
+    for (int i=0; i<breg.getAntalBostäder(); i++) {
+          System.out.println(breg.getBostad(i));
+    }
+    
+    System.out.println("2-rums bostäderna:");
+    for (int i=0; i<breg.getAntalBostäder(); i++) {
+      if (breg.getBostad(i).getRum()==2) {
+          System.out.println(breg.getBostad(i));
+      }
+    }
+  } // main
+} // Testbostadsregister
+</XMP>
+
+<P>
+<B>b-uppgiften</B><BR>
+<XMP>
+public void nyBostad(Bostad b) {
+    // Förlänger arrayen om fullt:
+    if (this.antal==arrBostad.length) {
+        Bostad [] temp=new Bostad[this.antal+1];
+        for (int i=0; i<this.antal; i++) {
+           temp[i]=arrBostad[i];
+        }
+        arrBostad=temp;
+    }
+    // Lägg in bostaden b i arrayen
+    this.arrBostad[antal]=b;
+    this.antal++;
+  }
+</XMP>
+
+<P>
+<B>c-uppgiften</B><BR>
+<XMP>
+public void tabortBostad(int index) {
+    // Om index är korrekt:
+    if ( (index>=0) && (index<this.antal)) {
+       // Flytta den bostad som ligger sist i arrayen till den 
+       // plats (index) som skall tas bort
+       arrBostad[index]=arrBostad[this.antal-1];
+       // Eventuellt "nulla" dess gamla plats:
+       //      arrBostad[this.antal-1]=null;
+       this.antal--;
+   }
+}
+</XMP>
+
+<HR>
+<CENTER>Slut lösningsförslag tentamen Programmeringsteknik I, 2010-10-19</CENTER>
+</HTML>

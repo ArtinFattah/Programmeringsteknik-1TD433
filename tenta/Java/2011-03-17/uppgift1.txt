@@ -1,0 +1,19 @@
+public double triangel(double bas, double hojd){
+    double area = -1;
+    if (bas < 0 || hojd < 0) {
+         System.out.println("Ogiltiga mått på triangeln");
+    } else {
+         area = bas*hojd/2;
+    }
+    return area;
+}
+
+Programmerarens namn                      12
+Klassmetod                                11
+Avvikelse från namnkonventionerna          2
+Objektmetod                                8
+Deklaration av lokal variabel             10
+Parameter                                  5
+Konstant                                   4
+Returtyp                                   6
+Ger kompileringsfel                        7

@@ -1,0 +1,18 @@
+public class TrafficSystem {
+ private CarQueue queue = new CarQueue();
+ private TrafficLight light;
+ private double intensity;
+ 
+ public TrafficSystem(int period, int green, double intens) {
+   light = new TrafficLight(period, green);
+   queue = new CarQueue();
+   intensity = intens;
+ }
+ 
+ public step() {
+   light.step();
+   if (
+ }
+  
+  
+}

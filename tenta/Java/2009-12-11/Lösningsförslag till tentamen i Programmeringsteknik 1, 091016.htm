@@ -1,0 +1,329 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>Lösningsförslag till tentamen i Programmeringsteknik 1, 091016</title>
+  </head>
+
+  <body>
+    <h1>Lösningsförslag till tentamen i Programmeringsteknik 1, 091016</h1>
+
+<B>Uppgift 1</B> 
+<xmp>
+import java.util.Scanner;
+
+public class Vindkraft {
+    
+    private String namn;
+    private double genStorlek, radie;
+
+    // Standardkonstruktor, ett förslag:
+    public Vindkraft() {
+        this.namn = "Windpower";
+        this.genStorlek = 15;
+         this.radie = 8;
+    }
+
+    // Överlagrad konstruktor
+    public Vindkraft( String inNamn, double inGen, double inRadie) {
+         this.namn = inNamn;
+         this.genStorlek = inGen;
+         this.radie = inRadie;
+    }
+
+    // Beräknar producerad energi under ett tidsintervall
+    public double prodEnergi(double tid, double vindHast) {
+        return ( this.radie *  this.genStorlek * tid * vindHast);
+    }
+
+    // Returnerar en sträng som innehåller instansvariablernas värden.
+    public String toString() {
+        return ("Namn: " +  this.namn +"\nRotorradie: " +  this.radie + 
+                "\nGeneratorstorlek: " +  this.genStorlek);
+    }
+    
+    public static void main(String[] args) {
+
+        double tid, vindHastighet, energi;
+
+        // Skapa ett vindkraftverk
+        Vindkraft vind = new Vindkraft("Vestas", 20, 9);
+
+        // Skriv ut information
+        System.out.println(vind);
+
+        // Läs in tid och vindhastighet
+        Scanner scan = new Scanner(System.in);
+        System.out.print("Ge tiden: ");
+        tid = scan.nextDouble();
+        System.out.print("Ge vindhastighet: ");
+        vindHastighet = scan.nextDouble();
+
+        // Beräkna energi
+        energi = vind.prodEnergi(tid, vindHastighet);
+
+        // Skriv ut energin
+        System.out.println(energi + " kWh energi har producerats");
+
+    }
+</xmp>
+
+<B>Uppgift 2</B>     
+<xmp>
+import java.util.*;
+
+public class Krets {
+    private double[] res;
+    private int antal;
+
+    public Krets(int a) {
+	 this.res = new double[a];
+	 this.antal = 0;
+    }
+
+    public void lasIn(int a) {
+	Scanner scan = new Scanner(System.in);
+	for (int i=0; i<a; i++) {
+	    System.out.println("Mata in värde på resistor " +(i+1));
+	     this.res[i] = scan.nextDouble();
+	}
+	 this.antal = a;
+    }
+
+    public void serie() {
+	double R = 0;
+	for (int i=0; i<antal;i++) {
+            R = R + this.res[i];
+	}
+	System.out.println("Totala resistansen vid seriekoppling är "+R +" Ohm");
+    }
+
+    public void kopplaUr(int index) {
+	if ( this.antal > 0) {
+	     this.res[index] =  this.res[antal-1];
+	     this.antal--;
+	}
+    }
+
+    public double parallell() {
+	double R = 0;
+	for (int i=0; i<antal;i++) {
+	    if (res[i]!=0) 
+		R += 1/res[i];
+	}
+	R = 1/R;
+	return R;
+    }
+
+    //metoden behöver inte skrivas:
+    public static void main(String[] arg) {
+	Scanner scan = new Scanner(System.in);
+	int index;
+	System.out.println("Hur många resistorer finns i kresten? ");
+	int ant = scan.nextInt();
+
+	Krets k = new Krets(ant);
+	k.lasIn(ant);
+
+	k.serie();
+	System.out.print("Totala resistansen vid parallellkoppling är ");
+	System.out.println(k.parallell() +" Ohm");
+
+	do {
+	    System.out.println("Vilken resistans skall kopplas ur, (index)");
+	    index = scan.nextInt();
+	}  while(index<0 || index>=ant);
+
+	k.kopplaUr(index);
+	k.serie();
+    }
+}
+</xmp>
+
+<B>Uppgift 3</B>     
+<xmp>
+import java.util.*;
+
+public class Vinkel {
+  private int grader;   
+  private int minuter;
+  private int sekunder;
+ 
+  public Vinkel() {
+      grader = minuter = sekunder = 0;
+  }
+
+  public Vinkel(int g, int m, int s) {
+	 this.grader = g;
+	 this.minuter = m;
+         this.sekunder = s;
+  }
+
+  public void lasIn() {   //läser in vinkelns grader, minuter och sekunder
+      Scanner scan = new Scanner(System.in);
+      System.out.println("Ange grader, minuter och sekunder ");
+       this.grader = scan.nextInt();
+       this.minuter = scan.nextInt();
+       this.sekunder = scan.nextInt();  
+  }
+ 
+  public void skrivUt() {  //skriver ut vinkelns grader, minuter och sekunder 
+      System.out.print("Vinkeln: " + this.grader+" grader, ");
+      System.out.println(minuter+"  this.minuter, "+sekunder+"  this.sekunder");
+  }
+ 
+  public Vinkel addera(Vinkel v) {   //adderar två vinklar. Inget skrivs ut
+      int nyGrad, nyMin, nySek;
+      nyGrad =  this.grader+v.grader;
+      nyMin =  this.minuter+v.minuter;
+      nySek =  this.sekunder+v.sekunder;
+      if (nySek>=60) {
+	  nyMin = nyMin+1;
+	  nySek = nySek-60;
+      }
+      if (nyMin>=60) {
+	  nyGrad = nyGrad+1;
+	  nyMin = nyMin - 60;
+      }
+      if (nyGrad>=360)
+	  nyGrad = nyGrad-360;
+
+      return (new Vinkel(nyGrad, nyMin, nySek));
+  }
+    
+  //metoden behöver inte skrivas:
+  public Vinkel subtrahera(Vinkel v){//subtraherar två vinklar. Inget skrivs ut
+      int nyGrad, nyMin, nySek;
+
+      if (this.sekunder < v.sekunder) {
+	  this.minuter--;
+	  this.sekunder += 60;
+      }
+      nySek = this.sekunder - v.sekunder;
+
+      if (this.minuter < v.minuter) {
+	  this.grader--;
+	  this.minuter += 60;
+      }
+      nyMin = this.minuter - v.minuter;
+      nyGrad = this.grader - v.grader;
+      Vinkel ny = new Vinkel(nyGrad,nyMin,nySek );
+      if (nyGrad < 0) ny = ny.addera(new Vinkel(360,0,0));
+
+      return ny;    
+  }
+
+  public static void main(String [] arg) {
+      Vinkel v1 = new Vinkel();
+      Vinkel v2 = new Vinkel();
+      Vinkel v3 = new Vinkel();
+      Vinkel v4,v5;
+      v1.lasIn();
+      v2.lasIn();
+      v3.lasIn();
+      v4 = v1.addera(v2);
+      v4.skrivUt();
+      v5 = v4.subtrahera(v3);
+      v5.skrivUt();
+  }
+} 
+</xmp>
+
+<B>Uppgift 4</B>     
+<xmp>
+import java.util.*;
+
+public class PolySet {
+    private double [] x; 
+    private double [] y; 
+    private int punkter;
+
+    public PolySet() {
+	 this.x = new double[50];
+	 this.y = new double[50];
+	 this.punkter = 0;
+    }
+
+    //metoden behöver inte skrivas:
+    public int getPunkter() {
+	return  this.punkter;
+    }
+
+    //metoden behöver inte skrivas:
+    public void read() {
+	Scanner scan = new Scanner(System.in);
+	System.out.println("Antal talpar? ");
+	 this.punkter = scan.nextInt();
+	System.out.println("Mata in x- och y-koordinater: ");
+	for (int i = 0; i <  this.punkter; i++ ) {
+	     this.x[i] = scan.nextDouble();
+	     this.y[i] = scan.nextDouble();
+	}
+    }
+
+    public double maxY() {
+	double ymax =  this.y[0];
+	for (int i=1; i <  this.y.length; i++) {
+	    if (ymax <  this.y[i]) ymax =  this.y[i];
+	}
+	return ymax;
+    }
+
+    public void läggTill(int x1, int y1) {
+	double[] xt= new double[ this.punkter+1];
+	double[] yt=new double[ this.punkter+1];
+	for (int i=0;i<punkter;i++) {
+	    xt[i]= this.x[i];
+	    yt[i]= this.y[i];
+	}
+	 this.x=new double[ this.punkter+1];
+	 this.y=new double[ this.punkter+1];
+	for (int i=0;i<punkter;i++) {
+	    x[i]=xt[i];
+	    y[i]=yt[i];
+	}
+	 this.x[punkter]=x1;
+	 this.y[punkter]=y1;
+	 this.punkter++;
+    }
+
+    public double integral() {
+	double delyta, yta = 0;
+	for (int i = 1; i < punkter; i++ ) {
+	    delyta = 0.5*( this.y[i] +  this.y[i-1])*( this.x[i]- this.x[i-1]);
+	    yta += delyta;
+	}
+	return yta;
+    }
+
+    public double riktningskoefficient(int n) {	
+	double rk=( this.y[n]- this.y[n]-y[n-1])/( this.y[n]-x[n]- this.y[n]-x[n-1]);
+	return rk;
+    }
+
+    //metoden behöver inte skrivas:
+    public static void main(String[] arg) {
+	Scanner scan = new Scanner(System.in);
+	PolySet ps = new PolySet();
+	int område;
+
+	ps.read();
+	System.out.println("Arean under polygontåget är: " + ps.integral());
+	do{
+	    System.out.println("Vilket område vill du beräkna derivatan av?");
+	    område = scan.nextInt();
+	}while(område >= ps.getPunkter() || område <= 0);
+
+	System.out.print("Derivatan i område "+område+" är ");
+	System.out.println(ps.riktningskoefficient(område));
+
+	double störstY = ps.maxY();
+	System.out.println("Största y-värdet är: " + störstY);
+    }
+			
+}
+</xmp>
+
+
+<hr>
+    </body>
+</html>
