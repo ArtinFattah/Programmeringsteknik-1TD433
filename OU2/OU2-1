@@ -9,13 +9,10 @@ def delete(my_list, number):
     del my_list[number_index]
 
 lst = [randint(0,10) for i in range(0,10)]
-''
-print(lst)
-
 iterations = 0
 while len(lst)>0:
-    print(f'{lst}, iterations: {iterations}')
     delete(lst, randint(0,10))
     iterations += 1
+    print(f'{lst}, iterations: {iterations}')
 
 print(f'iterations : {iterations}')
