@@ -1,15 +1,18 @@
-from keyword import kwlist
-from re import sub, finditer
+import keyword
+import re
 ref = {}
-stoppord = set(kwlist)
+stoppord = set(keyword.kwlist)
 
 with open('asd.txt', 'r', encoding='utf-8') as f:
-    for i, line in enumerate(f, 1):
+    for i, line in enumerate(f, start = 1):
         print(f'{i} {line}', end='')
-        line = sub(r'#.*$', '', line)
-        for w in finditer('[\w]+', line):
+        line = re.sub(r'#.*$', '', line)
+        for w in re.finditer(r'[a-zA-ZåäöÅÄÖ]+', line):
             if w in stoppord:
                 continue
-            ref.setdefault(w, []).append(i)
-for 
+            ref.setdefault(w.group(), []).append(i)
 
+print('Referenslista:')
+for (k, v) in ref.items():
+    print('\t'f'{k}: {v}')
+    
